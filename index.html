@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에듀보카 (EduVoca) - 스마트 학습</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 상단 헤더 영역 -->
+        <header>
+            <div class="header-top">
+                <h1>EduVoca</h1>
+                <span id="progress-text">0 / 50</span>
+            </div>
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+        </header>
+
+        <!-- 중앙 컨텐츠 영역 -->
+        <main>
+            <!-- 0. 홈 모드 (모드 선택 화면) -->
+            <section id="view-home" class="view-section active">
+                <div class="home-header">
+                    <h2>학습 모드 선택 🚀</h2>
+                    <p>원하는 모드로 영단어를 마스터하세요!</p>
+                </div>
+                <div class="mode-cards">
+                    <div class="mode-card" onclick="startDaily()">
+                        <div class="mode-icon">📅</div>
+                        <div class="mode-text">
+                            <h3>오늘의 도전 (Daily 50)</h3>
+                            <p>전체 단어 중 랜덤 50개</p>
+                        </div>
+                    </div>
+                    <div class="mode-card review-card" onclick="startReview()">
+                        <div class="mode-icon">🔥</div>
+                        <div class="mode-text">
+                            <h3>오답 노트 복습</h3>
+                            <p id="review-count">몰랐던 단어 다시 보기 (0개)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="category-section">
+                    <h3>주제별 집중 학습</h3>
+                    <div id="category-list" class="category-grid">
+                        <!-- JS로 동적 렌더링 -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- 1. 학습 모드 화면 -->
+            <section id="view-learn" class="view-section hidden">
+                <div class="card-container">
+                    <div id="word-card" class="card">
+                        <div class="card-front">
+                            <h2 id="card-en">Apple</h2>
+                            <button id="btn-sound" class="icon-btn" aria-label="발음 듣기">🔊</button>
+                        </div>
+                        <div class="card-back">
+                            <h2 id="card-ko">사과</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button id="btn-dont-know" class="btn btn-secondary">몰라요 😅</button>
+                    <button id="btn-know" class="btn btn-primary">알아요 🎯</button>
+                </div>
+            </section>
+
+            <!-- 2. 퀴즈 모드 화면 -->
+            <section id="view-quiz" class="view-section hidden">
+                <div id="quiz-container">
+                    <!-- 퀴즈 동적 렌더링 -->
+                </div>
+            </section>
+
+            <!-- 3. 리스트 화면 -->
+            <section id="view-list" class="view-section hidden">
+                <div class="list-header">
+                    <h2>📚 500단어 사전</h2>
+                </div>
+                <ul id="word-list" class="word-list">
+                    <!-- 리스트 동적 렌더링 -->
+                </ul>
+            </section>
+        </main>
+
+        <!-- 하단 탭 네비게이션 영역 -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" data-target="view-home">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">홈</span>
+            </button>
+            <button class="nav-btn" data-target="view-learn" id="nav-learn">
+                <span class="nav-icon">📖</span>
+                <span class="nav-text">진행중</span>
+            </button>
+            <button class="nav-btn" data-target="view-quiz">
+                <span class="nav-icon">🎮</span>
+                <span class="nav-text">퀴즈</span>
+            </button>
+            <button class="nav-btn" data-target="view-list">
+                <span class="nav-icon">📝</span>
+                <span class="nav-text">사전</span>
+            </button>
+        </nav>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
