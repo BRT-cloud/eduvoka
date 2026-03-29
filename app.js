@@ -87,9 +87,9 @@ function switchView(targetId) {
 /* 기능 1: 데일리 랜덤 모드 */
 function startDaily() {
     currentMode = 'daily';
-    // 500개 중 랜덤 50개 픽업
+    // 500개 중 랜덤 20개 픽업
     const shuffled = [...wordsData].sort(() => 0.5 - Math.random());
-    targetWords = shuffled.slice(0, 50);
+    targetWords = shuffled.slice(0, 20);
     activeQueue = [...targetWords];
     
     switchView('view-learn');
